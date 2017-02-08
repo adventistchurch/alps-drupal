@@ -1,0 +1,22 @@
+{% macro outputLanguageListItem(label, language_code, current_language, url_map) %}
+	{% set url = url_map[language_code] %}
+	{# 
+	/**
+	 * The following is an example of how to hide languages in the dropdown
+	 * if it has not received a proper alias or hasn't been translated
+	 * AND it is not the default language
+	 */
+	{% if 'node/' not in url or language_code == 'en' %}
+	#}
+	<li class="secondary-nav__subnav__list-item">
+		<a class="secondary-nav__subnav__link theme--secondary-background-hover-color--at-medium active " href="{{ url }}">
+			{% if language_code == current_language.getId() %}
+			<span class="icon icon--xs icon__check">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" enable-background="new 0 0 500 500"><title>Check</title><path fill="#fff" d="M427.4 10.3l-247 377-106.8-95.4-13.8-12.2-44.7 50.1L178 475.1l15.9 14.2L473.5 62.6l10.1-15.4z" class="fill--gray"></path></svg>
+			</span>
+			{% endif %}
+			{{ label }}
+		</a>
+	</li>
+	{# {% endif %} #}
+{% endmacro %}

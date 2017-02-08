@@ -1,36 +1,34 @@
-# Ignore configuration files that may contain sensitive information.
-sites/*/*settings*.php
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.bz2
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
 
-# Ignore paths that contain generated content.
-files/
-sites/*/files
-sites/*/private
+# Logs and databases #
+######################
+*.log
+*.sql
 
-# Ignore default text files
-robots.txt
-/CHANGELOG.txt
-/COPYRIGHT.txt
-/INSTALL*.txt
-/LICENSE.txt
-/MAINTAINERS.txt
-/UPGRADE.txt
-/README.txt
-sites/README.txt
-sites/all/modules/README.txt
-sites/all/themes/README.txt
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon
 
-# Ignore everything but the "sites" folder ( for non core developer )
-.htaccess
-web.config
-authorize.php
-cron.php
-index.php
-install.php
-update.php
-xmlrpc.php
-/includes
-/misc
-/modules
-/profiles
-/scripts
-/themes
+Thumbs.db
+._*
+
+# Vim generated files #
+######################
+*.un~
+
+# SASS #
+##########
+.sass-cache

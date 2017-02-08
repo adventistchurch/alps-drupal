@@ -1,0 +1,33 @@
+{#
+	This template is responsible for outputing a field.
+	@see alps--views-view-fields--output-fields.html.twig
+#}
+{{ field.separator }}
+{%- if field.wrapper_element -%}
+	<{{ field.wrapper_element }}{{ field.wrapper_attributes }}>
+{%- endif %}
+{%- if field.label -%}
+	{%- if field.label_element -%}
+		<{{ field.label_element }}{{ field.label_attributes }}>{{ field.label }}{{ field.label_suffix }}</{{ field.label_element }}>
+	{%- else -%}
+		{{ field.label }}{{ field.label_suffix }}
+	{%- endif %}
+{%- endif %}
+{%- if type == 'title' -%}
+	<h3 class="media-block__title block__title font--secondary--m theme--primary-text-color">{{ field.content }}</h3>
+{%- elseif type == 'body' or type == 'field_teaser' or type == 'field_description' -%}
+	<div class="font--primary--xs">{{ field.content }}</div>
+{%- elseif type == 'created' -%}
+	<time class="block__date font--secondary--xs brown space-half--btm">{{ field.content }}</time>
+{%- elseif type == 'view_node' -%}
+	<a href="{{ path('entity.node.canonical', {'node': nid}) }}" class="btn theme--secondary-background-color">{{ field.handler.options.text|default('Read More') }}</a>
+{%- else -%}
+	{%- if field.element_type -%}
+		<{{ field.element_type }}{{ field.element_attributes }}>{{ field.content }}</{{ field.element_type }}>
+	{%- else -%}
+		{{ field.content }}
+	{%- endif %}
+{%- endif %}
+{%- if field.wrapper_element -%}
+	</{{ field.wrapper_element }}>
+{%- endif %}

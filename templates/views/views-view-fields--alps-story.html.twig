@@ -1,0 +1,39 @@
+{# Find out if there is an image field name `field_image` or `field_header_image` #}
+{% set image = null %}
+{% if fields.field_header_image.content|render|striptags('<img><picture>')|trim|length %}
+	{% set image = fields.field_header_image %}
+{% elseif fields.field_image.content|render|striptags('<img><picture>')|trim|length %}
+	{% set image = fields.field_image %}
+{% endif %}
+
+{% set teaser = null %}
+{% if fields.field_teaser.content|render|striptags('<div><p><a><button><img><picture>')|trim|length %}
+	{% set teaser = fields.field_teaser.content %}
+{% elseif fields.field_description.content|render|striptags('<div><p><a><button><img><picture>')|trim|length %}
+	{% set teaser = fields.field_description.content %}
+{% endif %}
+
+{% if not image %}
+	<img src="" alt="Missing Image">
+{% endif %}
+<div class="story-block block spacing--half pad " style="background-image: url(//unsplash.it/g/1100/1100?blur);">
+	<div class="story-block__image-wrap round">
+		{{ image.content }}
+	</div>
+	<div class="story-block__content spacing">
+		<div>
+			<h2 class="story-block__heading font--secondary--l theme--secondary-text-color">{{ fields.title.content }}</h2>
+			<p class="font--secondary--xs white">{{ fields.field_sub_title.content }}</p>
+		</div>
+		<div class="spacing">
+			<div class="text story-block__description block__description white">
+				{{ fields.body.content }}
+			</div>
+			{% if fields.view_node %}
+				<a href="{{ path('entity.node.canonical', {'node': row.nid}) }}" class="story-block__cta block__cta btn theme--secondary-background-color">{{ fields.view_node.handler.options.text|default('Find out more') }}</a>
+			{% else %}
+				<p><a class="story-block__cta block__cta btn theme--secondary-background-color" href="{{ path('entity.node.canonical', {'node': row.nid}) }}">Find out more</a></p>
+			{% endif %}
+		</div> <!-- /.spacing -->
+	</div> <!-- story-block__content -->
+</div>

@@ -1,0 +1,219 @@
+<?php
+	use Drupal\Core\Url;
+	use Drupal\Core\Link;
+	use Drupal\views\Plugin\views\field\EntityLink;
+
+	function getThemeSetting($key, $defaul_value = NULL) {
+		$value = theme_get_setting($key);
+		if ($key === 'alps_primary_color') {
+			switch ($value) {
+				case 'emperor':
+				case 'earth':
+				case 'grapevine':
+				case 'denim':
+				case 'campfire':
+				case 'treefrog':
+				case 'ming':
+					// this code merely forces one of the above options
+					// to be present, otherwise, it will use the default of `emperor`
+					break;
+				default:
+					$value = 'emperor'; // this ensures a proper theme is being used
+			}
+		} else if ($key === 'alps_secondary_color') {
+			switch ($value) {
+				case 'cool':
+				case 'warm':
+					// this code merely forces one of the above options
+					// to be present, otherwise, it will use the default of `emperor`
+					break;
+				default:
+					$value = 'cool'; // this ensures a proper theme is being used
+			}
+		} else if ($key === 'alps_use_dark_theme') {
+			if ($value === 1 || $value === '1' || $value === TRUE) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else if ($key === 'logo') {
+			if (array_key_exists('url', $value) && $value['url'] != "") {
+				return $value;
+			}
+			return array(
+				'path' => 'themes/alps/images/sda-logo--square--en.svg',
+				'url' => '/themes/alps/images/sda-logo--square--en.svg',
+				'use_default' => 0
+			);
+		} else if ($key === 'alps_logo_horiz') {
+			if (is_array($value) && array_key_exists('url', $value) && $value['url'] != "") {
+				return $value;
+			}
+			$path = 'themes/alps/images/sda-logo--horiz--en.svg';
+			$url = '/themes/alps/images/sda-logo--horiz--en.svg';
+			if (is_array($value) && isset($value[0])) {
+				$file = \Drupal\file\Entity\File::load($value[0]);
+				if (!is_null($file)) {
+					$path = $file->getFileUri();
+					$url = $file->url();
+				}
+			}
+			return array(
+				'path' => $path,
+				'url' => $url,
+				'use_default' => 0
+			);
+		}
+		// use $default_value if the theme setting has been left NULL
+		// NOTE: if the string is empty that could be intentional so we
+		// won't use the provided $default_value in that scenario
+		return is_null($value) ? $defaul_value : $value;
+	}
+
+	/**
+	 * This function returns an array map to display alternate urls for different languages.
+	 * @param  [Drupal\node\NodeInterface] $node 
+	 * @return [mixed]       [description]
+	 */
+	function getAlternateLanguageUrlsForNode($node) {
+		// Get all languages of the site
+		$languages = getLanguagesInUse();
+		$urls = array();
+		if ($node) {
+			foreach ($languages as $language) {
+				$url = \Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $node->id()], ['language' => $language]);
+				$urls[$language->getId()] = \Drupal::service('path.alias_manager')->getAliasByPath($url->toString());
+			}
+		}
+		return $urls;
+	}
+
+	function getLanguagesInUse() {
+		$languages = \Drupal::languageManager()->getLanguages();
+		return $languages;
+	}
+
+	/**
+	* Implements hook_preprocess_block().
+	*/
+	function alps_preprocess(&$variables, $hook)
+	{
+		$variables['base_path'] = base_path();
+		$variables['current_language'] = \Drupal::languageManager()->getCurrentLanguage();
+		$variables['current_path'] = \Drupal::service('path.current')->getPath();
+		$variables['alps_primary_color'] = getThemeSetting('alps_primary_color');
+		$variables['alps_secondary_color'] = getThemeSetting('alps_secondary_color');
+		$variables['alps_use_dark_theme'] = getThemeSetting('alps_use_dark_theme');
+		$variables['alps_logo_square'] = getThemeSetting('logo');
+		$variables['alps_logo_horiz'] = getThemeSetting('alps_logo_horiz');
+		$variables['alps_logo_text'] = getThemeSetting('alps_logo_text');
+		$variables['alps_copyright'] = getThemeSetting('alps_copyright');
+		$variables['alps_footer_address'] = getThemeSetting('alps_footer_address');
+		$variables['urls_lang_map'] = getAlternateLanguageUrlsForNode(\Drupal::routeMatch()->getParameter('node'));
+		$variables['languages_in_use'] = getLanguagesInUse();
+		// var_dump(array_keys($variables)); exit;
+	}
+
+	function alps_preprocess_page(&$variables, $hook) {
+		$variables['alps_base_domain'] = \Drupal::request()->getHost();
+		$request = \Drupal::request();
+		if ($route = $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
+			$title = \Drupal::service('title_resolver')->getTitle($request, $route);
+			$variables['page_title'] = $title;
+		}
+
+		if (isset($variables['node'])) {
+			try {
+				// We `try` because the user might not have a `field_header_image` setup
+				$images = $variables['node']->get('field_header_image');
+				if ($images) {
+					$header_images = array();
+					foreach ($images as $key => $image) {
+						$header_images[] = array(
+							'url' => \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($image->entity->getFileUri()),
+							'attributes' => $image->getValue(),
+							'original' => $image
+						);
+					}
+					$variables['homepage_header_images'] = $header_images;
+				}
+			} catch (Exception $e) {}
+		}
+	} 
+
+	function alps_form_search_form_alter(&$form, &$form_state, $form_id) {
+		$form['#attributes']['class'] = array('search__results__form');
+		$form['#attributes']['data-drupal-selector'] = 'search__results__form';
+		$form['basic']['#attributes']['class'] = array('field-container', 'field-container--inline');
+		$form['basic']['keys']['#placeholder'] = $form['basic']['keys']['#title'];
+		unset($form['basic']['keys']['#title']);
+		$form['basic']['submit']['#attributes']['class'][] = 'search__submit';
+	}
+
+	function alps_preprocess_views_view_field(&$variables) {
+		// $field = $variables['field'];
+		// $row = $variables['row'];
+		// $raw_field = $row->_entity->{$field->field};
+		// $value = $raw_field->getValue();
+		// $file = \Drupal\file\Entity\File::load($value[0]['target_id']);
+		// kint(get_class($raw_field), $value[0], $file->url(), $file->getFieldDefinitions());
+		// exit;
+	}
+
+	function alps_preprocess_views_view_fields(&$variables) {
+		// TODO: doc
+		$variables['style_id'] = $variables['view']->getStyle()->definition['id'];
+	}
+
+	function alps_preprocess_block(&$variables) {
+		// var_dump(array_keys($variables['elements'])); exit;
+		$block = \Drupal\block\Entity\Block::load($variables['elements']['#id']);
+		$region = $block->getRegion();
+		$variables['region'] = $region;
+		// Retrieve active theme
+		$theme = \Drupal::theme()->getActiveTheme()->getName();
+
+		// Load region blocks
+		$blocks = entity_load_multiple_by_properties('block', array('theme' => $theme, 'region' => $region));
+		// Sort ‘em
+		uasort($blocks, 'Drupal\block\Entity\Block::sort');
+		$order = 0;
+		foreach ($blocks as $key => $region_block) {
+			if ($region_block->access('view')) {
+				$order++;
+				if ($region_block == $block) {
+					$variables['block_order'] = $order;
+				}
+			}
+		}
+
+		$variables['navigation_attributes'] = new \Drupal\Core\Template\Attribute();
+	}
+
+	function alps_preprocess_links(&$variables) {
+		if (isset($variables['links']['node-readmore'])) {
+			foreach ($variables['links'] as $key => $link) {
+				$classes = array();
+				if (isset($link['#options']['attributes']['class'])) {
+					$classes = $link['#options']['attributes']['class'];
+				}
+				if (!is_array($classes)) $classes = array();
+				$classes[] = 'btn theme--secondary-background-color';
+				$variables['links'][$key]['link']['#options']['attributes']['class'] = $classes;
+			}
+		}
+
+	}
+
+	/**
+	 * Implements hook_page_attachments_alter().
+	 */
+	function alps_page_attachments_alter(array &$attachments) {
+		foreach ($attachments['#attached']['html_head'] as $key => $attachment) {
+			if ($attachment[1] == 'system_meta_generator') {
+				unset($attachments['#attached']['html_head'][$key]);
+			}
+		}
+	}
+
+?>

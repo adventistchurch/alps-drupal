@@ -1,0 +1,18 @@
+<div class="shift-left--fluid">
+	{{ image }}
+</div> <!-- /.shift-left--fluid -->
+<div class="shift-right--fluid">
+	<div class="spacing--half">
+		{% for type, field in fields|without(image_field) %}
+			{% if type == 'title' %}
+				<h2 class="carousel__slide-heading font--tertiary--l theme--primary-text-color">{{ field.content }}</h2>
+			{% elseif type == 'body' %}
+				<div class="carousel__slide-dek pad-half--btm">
+					{{ field.content }}
+				</div> <!-- /.g-dek -->
+			{% else %}
+				{% include '@alps/views/alps--views-view-field--output.html.twig' with {field: field, type: type, nid: row.nid} only %}
+			{% endif %}
+		{% endfor %}
+	</div> <!-- /.carousel__slide-text -->
+</div>

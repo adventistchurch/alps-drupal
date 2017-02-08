@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ * - style_id: The format style (default, grid, html_list, etc...). Provided by alps.theme @see alps_preprocess_views_view_fields
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# Find out if there is an image field name `field_image` or `field_header_image` #}
+{% set image = null %}
+{% set image_field = '' %}
+{% if fields.field_image.content|render|striptags('<img><picture>')|trim|length %}
+	{% set image = fields.field_image.content %}
+	{% set image_field = 'field_image' %}
+{% elseif fields.field_header_image.content|render|striptags('<img><picture>')|trim|length %}
+	{% set image = fields.field_header_image.content %}
+	{% set image_field = 'field_header_image' %}
+{% endif %}
+
+{% if style_id == 'grid' %}
+	{# Display different markup based on the format style #}
+	{% include '@alps/views/alps--views-view-fields--grid.html.twig' %}
+{% else %}
+	{# Default format i.e. Unformatted List #}
+	{% include '@alps/views/alps--views-view-fields--default.html.twig' %}
+{% endif %}
