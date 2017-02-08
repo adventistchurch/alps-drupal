@@ -1,0 +1,80 @@
+// Drupal Admin Fixes
+#toolbar-administration {
+	z-index: 100000;
+}
+
+.jquery-attach-img-to-parent {
+	display: none;
+}
+
+.logo__text {
+	font-family: Oswald, Merriweather, Montserrat;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	line-height: 0.7em;
+
+	> span {
+		font-size: 12px;
+	}
+}
+
+.logo__link--square {
+	.logo__text {
+		line-height: 1.1em;
+	}
+}
+
+// Fixes
+#page-wrapper { width: 100%; }
+.story-block__image-wrap.round .img-wrap {
+	position: static;
+}
+.font--primary--xs__with-line-height {
+	> p, > div {
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
+	}
+}
+.font--primary--xs {
+	> p, > div {
+		font-family: inherit;
+		font-size: inherit;
+	}
+}
+.field-container--inline > input {
+	&[type="submit"] {
+		width: 20%;
+	}
+}
+.media-block__content {
+	.node__links ul > li:first-child {
+		padding-left: 0;
+	}
+}
+.no-pad--top-first:first-child {
+	padding-top: 0;
+}
+
+// Slide Alternate
+@media (min-width: 56.26em) {
+	.views-row:nth-child(odd) {
+		.shift-left--fluid {
+			float: left;
+		}
+		.shift-right--fluid {
+			float: right;
+			padding-left: 2.5rem;
+		}
+	}
+	.views-row:nth-child(even) {
+		.shift-left--fluid {
+			float: right;
+		}
+		.shift-right--fluid {
+			float: left;
+			padding-right: 2.5rem;
+		}
+	}
+}

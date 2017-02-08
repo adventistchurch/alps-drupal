@@ -1,0 +1,59 @@
+<section class="hero-carousel">
+	<div class="carousel rel">
+		<div class="carousel__slides js-carousel__single-item carousel--full-bleed carousel--with-height slick-initialized slick-slider" role="toolbar">
+			<div aria-live="polite" class="slick-list draggable">
+				<div class="slick-track" role="listbox" style="opacity: 1; width: 6100px;">
+					<div class="carousel__item rel slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 1525px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;"> 
+						<picture class="picture">
+							<!--[if IE 9]><video style="display: none;"><![endif]-->
+							<source srcset="//unsplash.it/1300/500/?random" media="(min-width: 900px)">
+							<source srcset="//unsplash.it/900/400/?random" media="(min-width: 700px)">
+							<source srcset="//unsplash.it/700/400/?random" media="(min-width: 500px)">
+							<!--[if IE 9]></video><![endif]-->
+							<img itemprop="image" srcset="//unsplash.it/500/500/?random" alt="Alt Text">
+						</picture>
+						<div class="carousel__item-text__wrap">
+							<div class="layout-container">
+								<div class="carousel__item-text  spacing--half">
+									<div>
+										<h2 class="font--tertiary--xl carousel__item-heading theme--primary-transparent-background-color">Adventist Beliefs</h2>
+										<br><h3 class="carousel__item-subtitle font--secondary--m theme--primary-transparent-background-color">We believe that God creates</h3>
+										<div class="carousel__item-dek pad-half--btm theme--primary-transparent-background-color">
+											<p>From neurons to nebulae, DNA to distant galaxies, we are surrounded by wonder. Yet the beauty is broken.</p>
+										</div> <!-- /.carousel__item-dek -->
+									</div>
+									<a href="" class="carousel__item-cta btn theme--secondary-background-color" tabindex="0">Find out more</a>
+								</div> <!-- /.carousel__item-text -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ul class="slick-dots" role="tablist" style="display: block;">
+				{% for item in items %}
+				<li class="{% if item.first %}slick-active{% endif %}" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation{{ loop.index }}" id="slick-slide{{ loop.index }}">
+					<button type="button" data-role="none" role="button" aria-required="false" tabindex="0">{{ loop.index1 }}</button>
+				</li>
+				{% endfor %}
+			</ul>
+		</div> <!-- /.carousel__slides -->
+		<div class="carousel__controls">
+			<span class="arrow__prev slick-arrow" style="display: inline;">
+				<span class="carousel__arrow carousel__arrow--prev icon round">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+						<title>Left arrow icon</title>
+						<path d="M0,25A25,25,0,1,0,25,0,25,25,0,0,0,0,25Zm15.07,0L28.31,11.75l3.43,3.43L21.93,25l9.82,9.82-3.43,3.43Z" class="theme--secondary-fill-color" fill="#438390"></path>
+					</svg>
+				</span>
+			</span>
+			<span class="arrow__next slick-arrow" style="display: inline;">
+				<span class="carousel__arrow carousel__arrow--next icon round">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+						<title>Right arrow icon</title>
+						<path d="M25,0A25,25,0,1,0,50,25,25,25,0,0,0,25,0ZM21.69,38.25l-3.43-3.43L28.07,25l-9.82-9.82,3.43-3.43L34.93,25Z" class="theme--secondary-fill-color" fill="#438390"></path>
+					</svg>
+				</span>
+			</span>
+		</div><!-- /.carousel__controls -->
+	</div> <!-- /.carousel -->
+</section> <!-- /.hero-carousel -->

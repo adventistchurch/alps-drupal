@@ -1,0 +1,6 @@
+{#
+	This is a utility template that outputs the fields the normal way (for the most part).
+#}
+{% for type, field in fields -%}
+	{% include '@alps/views/alps--views-view-field--output.html.twig' with {field: field, type: type, nid: nid} only %}
+{%- endfor %}
