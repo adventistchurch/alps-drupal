@@ -1,0 +1,55 @@
+name = ALPS
+description = Drupal 7 implementation of the Adventist Living Pattern System (ALPS) — a set of design patterns created by the Seventh-day Adventist Church for use around the world by Adventist churches, schools, and organizational units. The purpose of ALPS is to make it easy for our church to create good looking sites that promote the brand of the church, while allowing for individuality and customization of each site.
+core = 7.x
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[hero] = 'Hero'
+regions[full_width_first] = 'Full width first'
+regions[primary_first] = 'Primary first'
+regions[content_first] = 'Content first'
+regions[content] = 'Content'
+regions[content_last] = 'Content last'
+regions[sidebar_breakout] = 'Sidebar breakout'
+regions[sidebar] = 'Sidebar'
+regions[sidebar_last] = 'Sidebar last'
+regions[primary_last] = 'Primary last'
+regions[full_width_last] = 'Full width last'
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Theme Settings
+;;;;;;;;;;;;;;;;;;;;;
+
+; Colors
+; --------------
+settings[alps_colors_primary] = 'ming'
+settings[alps_colors_secondary] = 'cool'
+settings[alps_colors_dark] = 0
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Breakpoints
+;;;;;;;;;;;;;;;;;;;;;
+breakpoints[screen-xs-max] = (max-width: 767px)
+breakpoints[screen-sm-min] = (min-width: 768px)
+breakpoints[screen-sm-max] = (max-width: 991px)
+breakpoints[screen-md-min] = (min-width: 992px)
+breakpoints[screen-md-max] = (max-width: 1199px)
+breakpoints[screen-lg-min] = (min-width: 1200px)
+
+; Multipiers
+multipliers[screen-xs-max][] = 1.5x
+multipliers[screen-xs-max][] = 2x
+multipliers[screen-sm-min][] = 1.5x
+multipliers[screen-sm-min][] = 2x
+multipliers[screen-sm-max][] = 1.5x
+multipliers[screen-sm-max][] = 2x
+multipliers[screen-md-min][] = 1.5x
+multipliers[screen-md-min][] = 2x
+multipliers[screen-md-max][] = 1.5x
+multipliers[screen-md-max][] = 2x
+multipliers[screen-lg-min][] = 1.5x
+multipliers[screen-lg-min][] = 2x
