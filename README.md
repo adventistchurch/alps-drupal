@@ -14,19 +14,6 @@
 - Header Image: If you create an image field with the machine name of field_header_image it will automatically be used as the header image. Additionally, enable the title attribute on the image field to specifcy the "sub title" that is placed above the main title in the header image area.
 - Regular Image Field: Image fields are style with a <figure> tag and additional ALPS theme markup. Additionally, if you would like to have a caption applied to your image, enable the title field and it will be used as the caption.
 
-### jQuery
-- Background Images: Sometimes you want to render an image as a background image instead of via an <img> tag. You can do this by accessing the raw field content, I.E. {{ file_url(node.field_image.entity.fileuri) }} but this method is unreliable as we can not be sure the API for accessing the image will always remain constant for the life of Druapl and more importantly it doesn't give you the URL to the resized or styled image (if you change the display of an image). Using jQuery we can grab the image and apply it as a `background-image` to a parent div. See the following example:
-```
-<div class="jquery-attach-img-to-parent" data-parent-selector='.header__swath' data-original="{{ file_url(node.field_header_image.entity.fileuri) }}">
-	{{ content.field_header_image }}
-</div>
-```
-* .jquery-attach-img-to-parent must be present to let jQuery find this.
-* data-parent-selector: within this attribute use a jQuery selector to the parent div where the image should end up. In this case it will look for a parent with the class of `header__swath`.
-* data-original: This is used as a backup in case your installation of Drupal is rendering images in a way where we can't find the `src`.
-* The rest is self explanatory. We are letting Drupal render the field.
-* @see js/scripts.js for the implementation on how jQuery implements this.
-
 
 ### Views
 - Unformatted list: The default view output.
