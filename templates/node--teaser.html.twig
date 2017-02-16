@@ -22,7 +22,7 @@
 					<div class="spacing--half">
 						<div class="text text--s pad-half--btm">
 							<div class="media-block__description block__description font--primary--xs">
-								{{ content.body }}
+								{{ content.body|render|striptags }}
 							</div>
 						</div>
 						{{ content.links }}

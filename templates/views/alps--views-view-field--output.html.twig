@@ -16,7 +16,7 @@
 {%- if type == 'title' -%}
 	<h3 class="media-block__title block__title font--secondary--m theme--primary-text-color">{{ field.content }}</h3>
 {%- elseif type == 'body' or type == 'field_teaser' or type == 'field_description' -%}
-	<div class="font--primary--xs">{{ field.content }}</div>
+	<span class="font--primary--xs">{{ field.content|render|striptags }}</span>
 {%- elseif type == 'created' -%}
 	<time class="block__date font--secondary--xs brown space-half--btm">{{ field.content }}</time>
 {%- elseif type == 'view_node' -%}

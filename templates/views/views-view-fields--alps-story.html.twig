@@ -16,7 +16,7 @@
 {% if not image %}
 	<img src="" alt="Missing Image">
 {% endif %}
-<div class="story-block block spacing--half pad " style="background-image: url(//unsplash.it/g/1100/1100?blur);">
+<div class="story-block block spacing--half pad " style="background-image: url({{ fields.fid_image.url|default("//unsplash.it/g/1100/1100?blur")}});">
 	<div class="story-block__image-wrap round">
 		{{ image.content }}
 	</div>

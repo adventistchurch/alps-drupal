@@ -163,6 +163,22 @@
 	function alps_preprocess_views_view_fields(&$variables) {
 		// TODO: doc
 		$variables['style_id'] = $variables['view']->getStyle()->definition['id'];
+
+		if (isset($variables['fields']['fid'])) {
+			$entity = $variables['fields']['fid']->handler->getEntity($variables['row']);
+			if (!is_null($entity)) {
+				$url = NULL;
+				$image_style = \Drupal\image\Entity\ImageStyle::load('large');
+				if ($image_style) {
+					$url = $image_style->buildUrl($entity->getFileUri());
+				}
+				$variables['fields']['fid_image'] = array(
+					'url' => $url,
+					'attributes' => $entity->_referringItem->getValue(),
+					'entity' => $entity
+				);
+			}
+		}
 	}
 
 	function alps_preprocess_block(&$variables) {
