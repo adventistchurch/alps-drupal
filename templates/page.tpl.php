@@ -144,7 +144,7 @@ require_once path_to_theme().'/templates/inc/menu.inc.php';
 						<div class="flex-container cf ">
 							<div class="shift-left--fluid column__primary bg--white can-be--dark-light <?php if ($is_front): ?>no-pad--btm<?php endif ?>">
 								<?php print render($page['primary_first']); ?>
-								<div class="pad--primary spacing">
+								<div class="<?php if ($is_front): ?>pad--primary<?php endif ?> spacing">
 									<?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
 									<?php print $breadcrumb; ?>
 									<?php print render($page['content_first']); ?>
@@ -162,7 +162,7 @@ require_once path_to_theme().'/templates/inc/menu.inc.php';
 					<?php else: ?>
 					<div class="column__primary bg--white can-be--dark-light spacing--double <?php if ($is_front): ?>no-pad--btm<?php endif ?>">
 						<?php print render($page['primary_first']); ?>
-						<div class="pad--primary spacing">
+						<div class="<?php if ($is_front): ?>pad--primary<?php endif ?> spacing">
 							<?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
 							<?php print $breadcrumb; ?>
 							<?php print render($page['content_first']); ?>
