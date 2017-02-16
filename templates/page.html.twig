@@ -102,7 +102,7 @@
 							<div class="flex-container cf ">
 								<div class="shift-left--fluid column__primary bg--white can-be--dark-light {% if is_front %}no-pad--btm{% endif %}">
 									{{ page.primary_first }}
-									<div class="pad--primary spacing">
+									<div class="{% if not is_front %}pad--primary{% endif %} spacing">
 										{{ page.breadcrumb }}
 										{{ page.content_first }}
 										{{ page.content }}
@@ -119,7 +119,7 @@
 						{% else %}
 						<div class="column__primary bg--white can-be--dark-light spacing--double {% if is_front %}no-pad--btm{% endif %}">
 							{{ page.primary_first }}
-							<div class="pad--primary spacing">
+							<div class="{% if not is_front %}pad--primary{% endif %} spacing">
 								{{ page.breadcrumb }}
 								{{ page.content_first }}
 								{{ page.content }}
