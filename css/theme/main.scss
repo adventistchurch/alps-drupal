@@ -56,6 +56,9 @@
 .no-pad--top-first:first-child {
 	padding-top: 0;
 }
+.story-block {
+	background-size: cover;
+}
 
 // Slide Alternate
 @media (min-width: 56.26em) {

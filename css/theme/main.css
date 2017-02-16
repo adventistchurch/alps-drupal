@@ -40,6 +40,9 @@
 .no-pad--top-first:first-child {
   padding-top: 0; }
 
+.story-block {
+  background-size: cover; }
+
 @media (min-width: 56.26em) {
   .views-row:nth-child(odd) .shift-left--fluid {
     float: left; }

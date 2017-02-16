@@ -61,11 +61,11 @@
 			<div class="header__unify-logo-nav">
 				{% block page_logos %}
 				<a href="{{ front_page }}" class="logo__link logo__link--horiz theme--primary-background-color show-until--large logo--with-text">
-					<img src="{{ alps_logo_horiz.url }}" class="logo" alt="{{ "The Official Site of the Seventh-day Adventist world church logo"|trans }}">
+					<img src="{{ alps_logo_horiz.url }}" class="logo" alt="{{ alps_logo_text }}">
 					{% if alps_logo_text %}<span class="logo__text"><span>{{ alps_logo_text }}</span></span>{% endif %}
 				</a>
 				<a href="{{ front_page }}" class="logo__link logo__link--square theme--primary-background-color show-at--large logo--with-text">
-					<img src="{{ alps_logo_square.url }}" class="logo" alt="{{ "The Official Site of the Seventh-day Adventist world church logo"|trans }}">
+					<img src="{{ alps_logo_square.url }}" class="logo" alt="{{ alps_logo_text }}">
 					{% if alps_logo_text %}<span class="logo__text"><span>{{ alps_logo_text }}</span></span>{% endif %}
 				</a>
 				{% endblock %}
