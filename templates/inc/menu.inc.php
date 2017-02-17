@@ -88,7 +88,7 @@ class AlpsMenuHelper {
 		foreach ($items as $key => $item) {
 			$classes = array(
 				self::isActive($item) ? 'menu-item--active-trail' : '',
-				self::hasSubMenu($item) ? "{$this->class_preface}--with-subnav" : '',
+				self::hasSubMenu($item, $menu_level, $max_level) ? "{$this->class_preface}--with-subnav" : '',
 				$menu_level == 0 ? "{$this->class_preface}__list-item" : "{$this->class_preface}__subnav__list-item",
 				$this->li_class,
 			);
@@ -101,7 +101,7 @@ class AlpsMenuHelper {
 				);
 				?>
 				<?php print self::outputLink($item, array('class' => $classes)); ?>
-				<?php if (self::hasSubMenu($item)): ?>
+				<?php if (self::hasSubMenu($item, $menu_level, $max_level)): ?>
 					<div class="<?php print "{$this->class_preface}__subnav__arrow"; ?> va--middle js-toggle-parent"><span class="arrow--down"></span></div>
 					<?php $this->_outputLevel($item['below'], $menu_level + 1, $max_level); ?>
 				<?php endif ?>
@@ -138,7 +138,10 @@ class AlpsMenuHelper {
 		// TODO
 	}
 
-	public static function hasSubMenu($item) {
+	public static function hasSubMenu($item, $menu_level, $max_level) {
+		if (($menu_level+1) >= $max_level) { // $menu_level is zero indexed
+			return false;
+		}
 		return isset($item['below']) && count($item['below']) > 0;
 	}
 

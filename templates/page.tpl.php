@@ -94,7 +94,7 @@ require_once path_to_theme().'/templates/inc/menu.inc.php';
 			<div class="header__utility">
 				<div class="header__utility__inner full--until-large">
 					<nav id="secondary-nav" role="navigation" aria-labelledby="secondary-nav" class="navigation">
-						<?php AlpsMenuHelper::create(menu_tree_page_data('user-menu'))->render(); ?>
+						<?php AlpsMenuHelper::create(menu_tree_page_data('user-menu'))->render(1); ?>
 					</nav>
 					<form action="/search/node" role="search" method="get" class="search-form toggled-element">
 						<fieldset>
@@ -144,7 +144,7 @@ require_once path_to_theme().'/templates/inc/menu.inc.php';
 						<div class="flex-container cf ">
 							<div class="shift-left--fluid column__primary bg--white can-be--dark-light <?php if ($is_front): ?>no-pad--btm<?php endif ?>">
 								<?php print render($page['primary_first']); ?>
-								<div class="<?php if ($is_front): ?>pad--primary<?php endif ?> spacing">
+								<div class="pad--primary spacing">
 									<?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
 									<?php print $breadcrumb; ?>
 									<?php print render($page['content_first']); ?>
@@ -162,7 +162,7 @@ require_once path_to_theme().'/templates/inc/menu.inc.php';
 					<?php else: ?>
 					<div class="column__primary bg--white can-be--dark-light spacing--double <?php if ($is_front): ?>no-pad--btm<?php endif ?>">
 						<?php print render($page['primary_first']); ?>
-						<div class="<?php if ($is_front): ?>pad--primary<?php endif ?> spacing">
+						<div class="pad--primary spacing">
 							<?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
 							<?php print $breadcrumb; ?>
 							<?php print render($page['content_first']); ?>
