@@ -3,16 +3,16 @@
 {% block node_block %}
 	{% set image = null %}
 	{% if content.field_header_image %}
-		{% set image = node.field_header_image %}
+		{% set image = content.field_header_image %}
 	{% elseif content.field_image %}
-		{% set image = node.field_image %}
+		{% set image = content.field_image %}
 	{% endif %}
 	<div class="padding-top padding-bottom spacing--double no-pad--top-first">
 		<div class="media-block block spacing--quarter pad--primary">
 			<div class="media-block__inner spacing--quarter block__row">
 				<a class="media-block__image-wrap block__image-wrap db" href="{{ path('entity.node.canonical', {'node': node.id}) }}">
 					<div class="dib">
-						{{ content.field_image }}
+						{{ image }}
 					</div>
 				</a> <!-- /.media-block__image-wrap -->
 				<div class="media-block__content block__content ">
