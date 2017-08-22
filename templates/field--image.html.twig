@@ -1,8 +1,0 @@
-{% for item in items %}
-<figure class="figure size--large">
-	<div class="img-wrap">
-		{{ item.content }} {# @see image.html.twig for content output #}
-	</div> <!-- /.img-wrap -->
-	{% if item.content['#item'].title %}<figcaption class="figcaption"><p class="font--secondary--xs">{{ item.content['#item'].title }}</p></figcaption>{% endif %}
-</figure>
-{% endfor %}

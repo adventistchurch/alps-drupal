@@ -1,9 +1,0 @@
-{% for item in items %}
-	{%
-		set classes = [
-			'hover brown--light',
-			loop.last ? '' : 'space-half--right'
-		]
-	%}
-	{{ link(item.title, item.url, { 'class': classes } ) }}
-{% endfor %}
