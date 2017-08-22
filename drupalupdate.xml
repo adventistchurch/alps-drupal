@@ -1,0 +1,79 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:dc="http://purl.org/dc/elements/1.1/">
+{% for module in site.data.modules.modules %}
+
+    <title>{{ module.title }}</title>
+    <short_name>{{ module.shortname }}</short_name>
+    <dc:creator>{{ module.creator }}</dc:creator>
+    <type>{{ module.type }}</type>
+    <api_version>{{ module.api }}</api_version>
+    <recommended_major>{{ module.recommended_major }}</recommended_major>
+    <supported_majors>{{ module.supported_majors }}</supported_majors>
+    <default_major>{{ module.default_major }}</default_major>
+    <project_status>{{ module.project_status }}</project_status>
+    <link>{{ module.link }}</link>
+    <terms>
+      <term>
+          <name>Projects</name>
+          <value>{{ module.term_project }}</value>
+      </term>
+      <term>
+          <name>Maintenance status</name>
+          <value>{{ module.term_status }}</value>
+      </term>
+      <term>
+          <name>Development status</name>
+          <value>{{ module.term_dev_status }}</value>
+      </term>
+    </terms>
+
+    <releases>
+  {% for post in site.posts %}
+    {% if post.categories contains module.tag_key %}
+    <release>
+            <name>{{ post.drupal_name}} {{ post.drupal_version}}</name>
+            <version>{{ post.drupal_version}}</version>
+            <tag>{{ post.drupal_tag}}</tag>
+            <version_major>{{ post.drupal_version_major}}</version_major>
+            <version_patch>{{ post.drupal_version_patch}}</version_patch>
+            <status>{{ post.drupal_status}}</status>
+            <release_link>{{ site.url }}{{ post.url }}</release_link>
+            <download_link>{{ post.drupal_files.first.download_link}}</download_link>
+            <date>{{ post.drupal_files.first.date }}</date>
+            <mdhash>{{ post.drupal_files.first.mdhash}}</mdhash>
+            <filesize>{{ post.drupal_files.first.filesize}}</filesize>
+            <files>
+              {% for file in post.drupal_files %}
+                  <file>
+                    <url>{{ file.download_link }}</url>
+                    <archive_type>{{ file.archive_type }}</archive_type>
+                    <md5>{{ file.mdhash }}</md5>
+                    <size>{{ file.filesize }}</size>
+                    <filedate>{{ file.date }}</filedate>
+                </file>
+              {% endfor %}
+
+            </files>
+            <terms>
+                <term>
+                    <name>Release type</name>
+                    <value>Bug fixes</value>
+                </term>
+            </terms>
+            <security>ALPS for Drupal is not covered by Drupal security advisories.</security>
+        </release>
+
+
+
+    {% endif %}
+{% endfor %}
+</releases>
+
+{% endfor %}
+
+
+
+</project>
