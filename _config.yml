@@ -26,7 +26,7 @@ permalink: /:categories/:year/:month/:day/:title.html
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-tactile
+theme: jekyll-theme-minimal
 
 
 
