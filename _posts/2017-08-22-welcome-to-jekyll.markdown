@@ -2,7 +2,7 @@
 layout: post
 title: Blogging Like a Hacker
 date:   2017-08-22 09:49:05 -0400
-categories: update drupal7
+categories: update alps_drupal7
 tags: drupal7 theme
 
 drupal_name: alps
