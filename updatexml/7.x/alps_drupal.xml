@@ -1,8 +1,0 @@
----
-layout: drupalupdate
----
-{% for module in site.data.modules.alps_drupal7 %}
-
-{% include updatexml.html %}
-
-{% endfor %}
