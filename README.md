@@ -40,6 +40,7 @@ For modules and themes hosted off drupal.org, Drupal allows for a custom project
 ```
 project status url = https://adventistchurch.github.io/alps-drupal/update
 ```
+More info about this can be found at [drupal.org](https://www.drupal.org/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#project status url).
 
 ## Local Development
 
@@ -51,6 +52,6 @@ project status url = https://adventistchurch.github.io/alps-drupal/update
 
 ## Questions?
 
-[Open an Issue](https://github.com/barryclark/jekyll-now/issues/new) and let's chat!
+[Open an Issue](https://github.com/adventistchurch/alps-drupal/issues/new) and let's chat!
 
 
