@@ -38,7 +38,7 @@ Use the body content as the notes for the release.
 
 For modules and themes hosted off drupal.org, Drupal allows for a custom project update url. Include the following code in the project `.info` file:
 ```
-project status url = https://adventistchurch.github.io/alps-drupal/update
+project status url = https://alps-drupal.adventist.io/alps-drupal/update
 ```
 
 ## Local Development
