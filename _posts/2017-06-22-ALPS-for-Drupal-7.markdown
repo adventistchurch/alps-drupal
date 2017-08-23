@@ -3,7 +3,6 @@ layout: release
 title: ALPS for Drupal 7
 date:   2017-06-22 09:49:05 -0400
 categories: update alps_drupal7
-tags: drupal7 theme
 
 drupal_name: alps
 drupal_version: 7.x-2.0

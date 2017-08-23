@@ -3,7 +3,6 @@ layout: release
 title:  "ALPS for Drupal 8"
 date:   2017-06-23 09:49:05 -0400
 categories: update alps_drupal8
-tags: drupal7 theme
 
 drupal_name: alps
 drupal_version: 8.x-2.1
