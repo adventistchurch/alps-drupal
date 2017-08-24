@@ -11,7 +11,7 @@
 					{{ field.content }}
 				</div> <!-- /.g-dek -->
 			{% else %}
-				{% include '@alps/views/alps--views-view-field--output.html.twig' with {field: field, type: type, nid: row.nid} only %}
+				{% include '@alps/views/alps--views-view-field--output.html.twig' with {field: field, type: type} only %}
 			{% endif %}
 		{% endfor %}
 	</div> <!-- /.carousel__slide-text -->

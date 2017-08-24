@@ -12,7 +12,7 @@
 	#}
 	<div class="media-block__inner spacing--quarter block__row--small-to-large">
 		{% if image and fields|first == fields[image_field] %}
-			<a class="media-block__image-wrap block__image-wrap db" href="{{ path('entity.node.canonical', {'node': row.nid}) }}">
+			<a class="media-block__image-wrap block__image-wrap db" href="{{ alps_entity_url }}">
 				<div class="dib">
 					{{ image }}
 				</div>
@@ -27,9 +27,9 @@
 				<time class="block__date font--secondary--xs brown space-half--btm">{{ fields.created.content }}</time>
 			{% endif %}
 			<div class="spacing--half">
-				{% include '@alps/views/alps--views-view-fields--output-fields.html.twig' with {fields: fields|without('created', 'title', image_field_used), nid: row.nid} only %}
+				{% include '@alps/views/alps--views-view-fields--output-fields.html.twig' with {fields: fields|without('created', 'title', image_field_used)} only %}
 				{% if not fields.view_node %}
-					<p><a class="media-block__cta block__cta btn theme--secondary-background-color" href="{{ path('entity.node.canonical', {'node': row.nid}) }}">{{ "Read More"|t }}</a></p>
+					<p><a class="media-block__cta block__cta btn theme--secondary-background-color" href="{{ alps_entity_url }}">{{ "Read More"|t }}</a></p>
 				{% endif %}
 			</div>
 		</div>

@@ -34,9 +34,9 @@
 				{% endif %}
 			</div>
 			{% if fields.view_node %}
-				<a href="{{ path('entity.node.canonical', {'node': row.nid}) }}" class="btn theme--secondary-background-color">{{ fields.view_node.handler.options.text|default('Find out more') }}</a>
+				<a href="{{ alps_entity_url }}" class="btn theme--secondary-background-color">{{ fields.view_node.handler.options.text|default('Find out more') }}</a>
 			{% else %}
-				<a href="{{ path('entity.node.canonical', {'node': row.nid}) }}" class="carousel__item-cta btn theme--secondary-background-color" tabindex="0">{{ 'Find out more'|t }}</a>
+				<a href="{{ alps_entity_url }}" class="carousel__item-cta btn theme--secondary-background-color" tabindex="0">{{ 'Find out more'|t }}</a>
 			{% endif %}
 		</div>
 	</div>

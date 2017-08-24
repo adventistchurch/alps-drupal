@@ -20,7 +20,7 @@
 {%- elseif type == 'created' -%}
 	<time class="block__date font--secondary--xs brown space-half--btm">{{ field.content }}</time>
 {%- elseif type == 'view_node' -%}
-	<a href="{{ path('entity.node.canonical', {'node': nid}) }}" class="btn theme--secondary-background-color">{{ field.handler.options.text|default('Read More') }}</a>
+	<a href="{{ alps_entity_url }}" class="btn theme--secondary-background-color">{{ field.handler.options.text|default('Read More') }}</a>
 {%- else -%}
 	{%- if field.element_type -%}
 		<{{ field.element_type }}{{ field.element_attributes }}>{{ field.content }}</{{ field.element_type }}>

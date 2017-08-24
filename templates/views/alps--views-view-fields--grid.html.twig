@@ -18,7 +18,7 @@
 				</div>
 			</div>
 		{% else %}
-			{% include '@alps/views/alps--views-view-field--output.html.twig' with {field: field, type: type, nid: row.nid} only %}
+			{% include '@alps/views/alps--views-view-field--output.html.twig' with {field: field, type: type} only %}
 		{% endif %}
 	{% endfor %}
 </div> <!-- /.media-block__inner -->

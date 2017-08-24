@@ -75,13 +75,16 @@
 	 * @param  [Drupal\node\NodeInterface] $node 
 	 * @return [mixed]       [description]
 	 */
-	function getAlternateLanguageUrlsForNode($node) {
-		// Get all languages of the site
+	function getAlternateLanguageUrlsForNode($node = NULL) {
+		$urls = [];
 		$languages = getLanguagesInUse();
-		$urls = array();
-		if ($node) {
-			foreach ($languages as $language) {
+		foreach ($languages as $language) {
+			if ($node) {
 				$url = \Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $node->id()], ['language' => $language]);
+				$urls[$language->getId()] = \Drupal::service('path.alias_manager')->getAliasByPath($url->toString());
+			} else {
+				$current_uri = \Drupal::request()->getRequestUri();
+				$url = \Drupal\Core\Url::fromUri('internal:'.$current_uri, ['language' => $language]);
 				$urls[$language->getId()] = \Drupal::service('path.alias_manager')->getAliasByPath($url->toString());
 			}
 		}
@@ -179,6 +182,10 @@
 				);
 			}
 		}
+
+		try {
+			$variables['alps_entity_url'] = $variables['row']->_entity->toUrl();
+		} catch (Exception $e) {}
 	}
 
 	function alps_preprocess_block(&$variables) {

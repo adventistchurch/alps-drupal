@@ -30,9 +30,9 @@
 				{{ fields.body.content }}
 			</div>
 			{% if fields.view_node %}
-				<a href="{{ path('entity.node.canonical', {'node': row.nid}) }}" class="story-block__cta block__cta btn theme--secondary-background-color">{{ fields.view_node.handler.options.text|default('Find out more') }}</a>
+				<a href="{{ alps_entity_url }}" class="story-block__cta block__cta btn theme--secondary-background-color">{{ fields.view_node.handler.options.text|default('Find out more') }}</a>
 			{% else %}
-				<p><a class="story-block__cta block__cta btn theme--secondary-background-color" href="{{ path('entity.node.canonical', {'node': row.nid}) }}">Find out more</a></p>
+				<p><a class="story-block__cta block__cta btn theme--secondary-background-color" href="{{ alps_entity_url }}">Find out more</a></p>
 			{% endif %}
 		</div> <!-- /.spacing -->
 	</div> <!-- story-block__content -->
