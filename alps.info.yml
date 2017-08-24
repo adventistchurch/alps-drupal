@@ -1,5 +1,6 @@
 name: ALPS Drupal 8 Theme
 type: theme
+project status url: https://alps-drupal.adventist.io/alps-drupal/update
 base theme: classy
 description: A base theme using ALPS
 core: 8.x
