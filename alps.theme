@@ -41,16 +41,16 @@
 				return $value;
 			}
 			return array(
-				'path' => 'themes/alps/images/sda-logo--square--en.svg',
-				'url' => '/themes/alps/images/sda-logo--square--en.svg',
+				'path' => drupal_get_path('theme', 'alps').'/images/sda-logo--square--en.svg',
+				'url' => '/'.drupal_get_path('theme', 'alps').'/images/sda-logo--square--en.svg',
 				'use_default' => 0
 			);
 		} else if ($key === 'alps_logo_horiz') {
 			if (is_array($value) && array_key_exists('url', $value) && $value['url'] != "") {
 				return $value;
 			}
-			$path = 'themes/alps/images/sda-logo--horiz--en.svg';
-			$url = '/themes/alps/images/sda-logo--horiz--en.svg';
+			$path = drupal_get_path('theme', 'alps').'/images/sda-logo--horiz--en.svg';
+			$url = '/'.drupal_get_path('theme', 'alps').'/images/sda-logo--horiz--en.svg';
 			if (is_array($value) && isset($value[0])) {
 				$file = \Drupal\file\Entity\File::load($value[0]);
 				if (!is_null($file)) {
