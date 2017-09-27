@@ -116,13 +116,13 @@ require_once path_to_theme().'/templates/inc/menu.inc.php';
 				<?php print render($page['hero']); ?>
 				<?php if (!$is_front): ?>
 					<?php 
-					$has_header_image = isset($node) && isset($node->field_header_image);
+					$has_header_image = isset($node) && isset($node->field_header_image) && !empty($node->field_header_image);
 					if ($has_header_image) {
 						$header_image_field = $node->field_header_image[LANGUAGE_NONE][0];
 						$header_image_url = image_style_url('large', $header_image_field['uri']);
 					}
 					?>
-					<header class="header__swath theme--primary-background-color header-swath--with-image blend-mode--multiply" <?php if ($has_header_image): ?> style="background-image: url(<?php print $header_image_url; ?>);"<?php endif ?>>
+					<header class="header__swath theme--primary-background-color <?php if ($has_header_image): ?>header-swath--with-image<?php endif ?> blend-mode--multiply" <?php if ($has_header_image): ?> style="background-image: url(<?php print $header_image_url; ?>);"<?php endif ?>>
 						<div class="layout-container cf">
 							<div class="flex-container cf">
 								<div class="shift-left--fluid">
