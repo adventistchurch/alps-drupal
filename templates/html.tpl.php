@@ -64,10 +64,10 @@
 	<title><?php print $head_title; ?></title>
 	<?php print $styles; ?>
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:400,400i,700|Montserrat|Oswald" media="all">
-	<link rel="stylesheet" type="text/css" href="//cdn.adventist.io/alps/2/latest/css/main.css" media="all">
+	<link rel="stylesheet" type="text/css" href="//cdn.adventist.org/alps/2/latest/css/main.css" media="all">
 	<link rel="stylesheet" href="<?php print '/' . path_to_theme() . '/css/main.css'; ?>" />
 	<?php print $scripts; ?>
-	<script src="//cdn.adventist.io/alps/2/latest/js/head-script.min.js" type="text/javascript"></script>
+	<script src="//cdn.adventist.org/alps/2/latest/js/head-script.min.js" type="text/javascript"></script>
 </head>
 <body class="theme--<?php print $alps_secondary_color; ?> <?php if ($alps_use_dark_theme): ?>dark<?php endif; ?>">
 <?php print $page_top; ?>
@@ -75,7 +75,7 @@
 <?php print $page_bottom; ?>
 
 <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
-<script src="//cdn.adventist.io/alps/2/latest/js/script.min.js" type="text/javascript"></script>
+<script src="//cdn.adventist.org/alps/2/latest/js/script.min.js" type="text/javascript"></script>
 <script src="<?php print '/' . path_to_theme() . '/js/scripts.js'; ?>"></script>
 
 </body>
