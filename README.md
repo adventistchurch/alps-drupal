@@ -1,4 +1,4 @@
-# Theme Instalation
+# Drupal 8 Theme Installation
 - Install the [helper module](https://github.com/adventistchurch/alps_drupal_helper)
 - Download/extract contents into the themes folder within a subfolder such as `alps`. I.E. `themes/alps`
 - Go to admin > appearance — click the "install and set as default" link.
