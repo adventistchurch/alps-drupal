@@ -24,10 +24,10 @@ alps-header:
   css:
     theme:
       //fonts.googleapis.com/css?family=Merriweather:400,400i,700|Montserrat|Oswald: { type: external, minified: true }
-      //cdn.adventist.io/alps/2/latest/css/main.css: { type: external, minified: true }
+      //cdn.adventist.org/alps/2/latest/css/main.css: { type: external, minified: true }
   js:
-    //cdn.adventist.io/alps/2/latest/js/head-script.min.js: { header: true, type: external, minified: true }
+    //cdn.adventist.org/alps/2/latest/js/head-script.min.js: { header: true, type: external, minified: true }
 alps-footer:
   version: 1.x
   js:
-    //cdn.adventist.io/alps/2/latest/js/script.min.js: { type: external, minified: true }
+    //cdn.adventist.org/alps/2/latest/js/script.min.js: { type: external, minified: true }

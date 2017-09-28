@@ -81,7 +81,7 @@
 				{{ page.hero }}
 				{% if not is_front%}
 					{% set has_header_image = homepage_header_images|length > 0 %}
-					<header class="header__swath theme--primary-background-color header-swath--with-image blend-mode--multiply" style="background-image: url({{ homepage_header_images.0.url}});">
+					<header class="header__swath theme--primary-background-color {% if has_header_image %}header-swath--with-image{% endif %} blend-mode--multiply" style="background-image: url({{ homepage_header_images.0.url}});">
 						<div class="layout-container cf">
 							<div class="flex-container cf">
 								<div class="shift-left--fluid">
